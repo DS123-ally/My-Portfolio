@@ -137,7 +137,7 @@ export default function ChatBot() {
     {
       id: 0,
       role: 'bot',
-      text: "Hi! I'm **Thala**, Dinesh's personal AI assistant. 👋\n\nAsk me anything about Dinesh — his skills, projects, experience, or how to get in touch. How can I help you today?",
+      text: "Hi! I'm **SpaceX**, Dinesh's personal AI assistant. 👋\n\nAsk me anything about Dinesh — his skills, projects, experience, or how to get in touch. How can I help you today?",
     },
   ])
   const [input, setInput] = useState('')
@@ -231,7 +231,7 @@ export default function ChatBot() {
                 <span className="chat-header__status" />
               </div>
               <div className="chat-header__info">
-                <div className="chat-header__name">Thala</div>
+                <div className="chat-header__name">SpaceX</div>
                 <div className="chat-header__sub">Dinesh's Personal Assistant · Always online</div>
               </div>
               <button className="chat-header__close" onClick={() => setOpen(false)} aria-label="Close">
