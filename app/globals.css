@@ -512,6 +512,97 @@ nav > div {
   text-decoration: underline;
 }
 
+.achievement-list {
+  display: grid;
+  gap: 12px;
+}
+
+.achievement-item {
+  display: grid;
+  grid-template-columns: 140px 1fr 1.4fr;
+  gap: 18px;
+  align-items: start;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  text-decoration: none;
+}
+
+.achievement-item > span,
+.achievement-item p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.achievement-item h3 {
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.achievement-item:hover {
+  border-color: #b8b8b0;
+}
+
+.contact-panel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: end;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel);
+}
+
+.contact-panel h2 {
+  margin-bottom: 12px;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.05;
+}
+
+.contact-panel p {
+  max-width: 560px;
+  color: var(--muted);
+}
+
+.contact-panel__actions {
+  display: grid;
+  gap: 16px;
+}
+
+.contact-panel__email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 10px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.contact-panel__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.contact-panel__links a {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.contact-panel__links a:hover {
+  color: var(--ink);
+}
+
 footer {
   background: var(--bg);
   color: var(--muted) !important;
@@ -561,5 +652,14 @@ footer {
   .btn-primary-hero,
   .btn-outline-hero {
     width: 100%;
+  }
+
+  .achievement-item,
+  .contact-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-panel__links {
+    justify-content: flex-start;
   }
 }
