@@ -673,10 +673,10 @@ footer {
   right: 24px;
   bottom: 84px;
   z-index: 80;
-  width: min(380px, calc(100vw - 32px));
-  height: min(560px, calc(100vh - 112px));
+  width: min(360px, calc(100vw - 32px));
+  max-height: min(560px, calc(100vh - 112px));
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  grid-template-rows: auto auto auto auto;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -726,14 +726,15 @@ footer {
   display: grid;
   align-content: start;
   gap: 12px;
-  overflow: auto;
+  max-height: 300px;
+  overflow-y: auto;
   overflow-x: hidden;
   padding: 14px;
   scrollbar-width: thin;
 }
 
 .rag-chat__message {
-  max-width: 88%;
+  max-width: 100%;
   padding: 11px 12px;
   border: 1px solid var(--line);
   border-radius: 14px;
@@ -742,6 +743,7 @@ footer {
 
 .rag-chat__message--user {
   justify-self: end;
+  max-width: 86%;
   background: var(--accent-soft);
 }
 
@@ -769,21 +771,17 @@ footer {
 
 .rag-chat__suggestions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: visible;
   padding: 10px 14px;
   border-top: 1px solid var(--line);
-  scrollbar-width: none;
-}
-
-.rag-chat__suggestions::-webkit-scrollbar {
-  display: none;
 }
 
 .rag-chat__suggestions button {
-  flex: 0 0 auto;
-  max-width: 210px;
+  flex: 1 1 calc(50% - 8px);
+  min-width: 0;
+  max-width: none;
   padding: 7px 10px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -924,5 +922,14 @@ footer {
   .rag-chat {
     right: 16px;
     bottom: 74px;
+    width: calc(100vw - 32px);
+  }
+
+  .rag-chat__messages {
+    max-height: 260px;
+  }
+
+  .rag-chat__suggestions button {
+    flex-basis: 100%;
   }
 }

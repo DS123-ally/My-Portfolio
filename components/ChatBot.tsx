@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const KNOWLEDGE = [
@@ -34,6 +34,14 @@ type Message = {
   sources?: string[]
 }
 
+const INITIAL_MESSAGES: Message[] = [
+  {
+    role: 'assistant',
+    text: 'Hi, I am Lyra, the portfolio RAG assistant. Ask about Dinesh, his projects, skills, experience, or contact details.',
+    sources: ['Profile'],
+  },
+]
+
 function retrieve(query: string) {
   const tokens = query.toLowerCase().split(/\W+/).filter(Boolean)
   return KNOWLEDGE
@@ -60,14 +68,20 @@ function answerQuestion(query: string) {
 export default function ChatBot() {
   const [open, setOpen] = useState(false)
   const [input, setInput] = useState('')
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: 'assistant',
-      text: 'Hi, I am Lyra, the portfolio RAG assistant. Ask about Dinesh, his projects, skills, experience, or contact details.',
-      sources: ['Profile'],
-    },
-  ])
+  const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    const resetChat = () => {
+      setOpen(false)
+      setInput('')
+      setMessages(INITIAL_MESSAGES)
+    }
+
+    resetChat()
+    window.addEventListener('pageshow', resetChat)
+    return () => window.removeEventListener('pageshow', resetChat)
+  }, [])
 
   const send = (value: string) => {
     const question = value.trim()
@@ -85,7 +99,7 @@ export default function ChatBot() {
 
   return (
     <>
-      <button className="rag-chat-button" onClick={() => setOpen((value) => !value)} aria-label="Open RAG assistant">
+      <button className="rag-chat-button" onClick={() => setOpen((value) => !value)} aria-label="Open Lyra assistant">
         {open ? 'Close' : 'Ask Lyra'}
       </button>
 
@@ -103,7 +117,7 @@ export default function ChatBot() {
                 <strong>Lyra</strong>
                 <span>Answers grounded in page content</span>
               </div>
-              <button onClick={() => setOpen(false)} aria-label="Close RAG assistant">×</button>
+              <button onClick={() => setOpen(false)} aria-label="Close Lyra assistant">×</button>
             </div>
 
             <div className="rag-chat__messages">
