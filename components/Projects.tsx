@@ -71,8 +71,8 @@ export default function Projects() {
               </div>
 
               <div className="project-card__tags">
-                {[...project.tech, ...project.tags].map((tag) => (
-                  <span key={tag}>{tag}</span>
+                {[...project.tech, ...project.tags].map((tag, tagIndex) => (
+                  <span key={`${project.name}-${tag}-${tagIndex}`}>{tag}</span>
                 ))}
               </div>
 

@@ -6,6 +6,7 @@ import Projects from '@/components/Projects'
 import Experience from '@/components/Experience'
 import Achievements from '@/components/Achievements'
 import Contact from '@/components/Contact'
+import ChatBot from '@/components/ChatBot'
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       >
         © 2025 Dinesh Seervi &nbsp;·&nbsp; Pune, India &nbsp;·&nbsp; AI Developer
       </footer>
+      <ChatBot />
     </>
   )
 }

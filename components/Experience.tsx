@@ -39,7 +39,7 @@ export default function Experience() {
         Experience <span className="grad-text">&</span> Leadership
       </h2>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px', alignItems: 'center' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px', alignItems: 'center' }}>
         <div
           style={{
             position: 'relative',
@@ -81,38 +81,6 @@ export default function Experience() {
             </FadeUp>
           ))}
         </div>
-
-        <FadeUp delay={0.2}>
-          <div className="experience-panel" aria-hidden="true">
-            <div className="experience-panel__header">
-              <span>Growth Map</span>
-              <strong>2024-2028</strong>
-            </div>
-            <div className="experience-panel__grid">
-              <div>
-                <span>Open Source</span>
-                <strong>Collaboration</strong>
-              </div>
-              <div>
-                <span>Data Science</span>
-                <strong>Analysis</strong>
-              </div>
-              <div>
-                <span>AI / ML</span>
-                <strong>Models</strong>
-              </div>
-              <div>
-                <span>Cloud</span>
-                <strong>Systems</strong>
-              </div>
-            </div>
-            <div className="experience-panel__rail">
-              <i />
-              <i />
-              <i />
-            </div>
-          </div>
-        </FadeUp>
       </div>
     </section>
   )

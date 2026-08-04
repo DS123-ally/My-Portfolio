@@ -3,36 +3,35 @@
 import FadeUp from './FadeUp'
 
 const LINKS = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/dinesh-seervi-00418532b/' },
-  { label: 'GitHub', href: 'https://github.com/DS123-ally' },
-  { label: 'Phone', href: 'tel:+919699623993' },
-  { label: 'Twitter', href: 'https://x.com/DineshSeer40336' },
+  { label: 'Email', value: 'dineshseervi1208@gmail.com', href: 'mailto:dineshseervi1208@gmail.com' },
+  { label: 'LinkedIn', value: 'dinesh-seervi', href: 'https://www.linkedin.com/in/dinesh-seervi-00418532b/' },
+  { label: 'GitHub', value: 'DS123-ally', href: 'https://github.com/DS123-ally' },
+  { label: 'Phone', value: '+91 96996 23993', href: 'tel:+919699623993' },
 ]
 
 export default function Contact() {
   return (
     <section id="contact">
       <FadeUp>
-        <div className="contact-panel">
-          <div>
-            <div className="section-label">Contact</div>
-            <h2>Let&apos;s Build Something</h2>
+        <div className="contact-section">
+          <div className="contact-section__header">
+            <div>
+              <div className="section-label">Contact</div>
+              <h2>Open to internships, research, and AI collaborations.</h2>
+            </div>
             <p>
-              Open to research collaborations, internships, and building things that matter.
+              Reach out for AI/ML internships, research collaborations, open-source work, or project ideas that need
+              thoughtful execution.
             </p>
           </div>
 
-          <div className="contact-panel__actions">
-            <a href="mailto:dineshseervi1208@gmail.com" className="contact-panel__email">
-              dineshseervi1208@gmail.com
-            </a>
-            <div className="contact-panel__links">
-              {LINKS.map((link) => (
-                <a key={link.label} href={link.href}>
-                  {link.label}
-                </a>
-              ))}
-            </div>
+          <div className="contact-section__grid">
+            {LINKS.map((link) => (
+              <a key={link.label} href={link.href} className="contact-card">
+                <span>{link.label}</span>
+                <strong>{link.value}</strong>
+              </a>
+            ))}
           </div>
         </div>
       </FadeUp>
