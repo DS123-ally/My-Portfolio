@@ -37,7 +37,7 @@ type Message = {
 const INITIAL_MESSAGES: Message[] = [
   {
     role: 'assistant',
-    text: 'Hi, I am Lyra, the portfolio RAG assistant. Ask about Dinesh, his projects, skills, experience, or contact details.',
+    text: 'Hi, I am Lyra, the portfolio Assistant. Ask about Dinesh, his projects, skills, experience, or contact details.',
     sources: ['Profile'],
   },
 ]
