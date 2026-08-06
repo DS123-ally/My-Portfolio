@@ -31,7 +31,7 @@ export default function Home() {
           letterSpacing: '0.04em',
         }}
       >
-        © 2025 Dinesh Seervi &nbsp;·&nbsp; Pune, India &nbsp;·&nbsp; AI Developer
+        © 2026 Dinesh Seervi &nbsp;·&nbsp; Pune, India &nbsp;·&nbsp; AI Developer
       </footer>
       <ChatBot />
     </>
