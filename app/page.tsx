@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { ArrowUpRight, Mail } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import ChatBot from '@/components/ChatBot'
 
@@ -112,7 +113,10 @@ function ProjectVisual({ tone, index }: { tone: string; index: string }) {
         <div className="visual-flow">
           <span>INPUT</span><b>→</b><span>RETRIEVE</span><b>→</b><span>REASON</span><b>→</b><span>OUTPUT</span>
         </div>
-        <div className="visual-data"><i /><i /><i /><i /></div>
+        <div className="visual-output">
+          <span>STATUS / COMPLETE</span>
+          <i /><i /><i />
+        </div>
       </div>
     </div>
   )
@@ -211,19 +215,23 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="page-section about-grid">
-          <div className="about-statement">
-            <div className="section-code"><span>06</span>About</div>
-            <h2>I&apos;m interested in the point where models become products.</h2>
-          </div>
-          <div className="about-copy">
-            <p>I&apos;m pursuing a B.Tech in Computer Science Engineering at AISSMS IOIT, Pune. I build at the intersection of machine learning, data, and agentic workflows.</p>
-            <p>What interests me most is practical intelligence: systems that retrieve the right context, make useful decisions, and help people move through complex work faster.</p>
-            <dl>
-              <div><dt>EDUCATION</dt><dd>B.Tech CSE · 2024–2028</dd></div>
-              <div><dt>FOCUS</dt><dd>LLMs, RAG, LangGraph, AI products</dd></div>
-              <div><dt>BASE</dt><dd>Pune, India · Open to remote</dd></div>
-            </dl>
+        <section id="about" className="page-section">
+          <SectionHeader index="06" eyebrow="About" title="The person behind the systems." copy="My background, what drives the work, and the direction I am building toward." />
+          <div className="about-grid">
+            <div className="about-statement">
+              <span className="micro-label">THE THROUGH-LINE</span>
+              <h3>I&apos;m interested in the point where models become useful products.</h3>
+              <div className="about-mark" aria-hidden="true">DS.</div>
+            </div>
+            <div className="about-copy">
+              <p>I&apos;m pursuing a B.Tech in Computer Science Engineering at AISSMS IOIT, Pune. I build at the intersection of machine learning, data, and agentic workflows.</p>
+              <p>What interests me most is practical intelligence: systems that retrieve the right context, make useful decisions, and help people move through complex work faster.</p>
+              <dl>
+                <div><dt>EDUCATION</dt><dd>B.Tech CSE · 2024–2028</dd></div>
+                <div><dt>FOCUS</dt><dd>LLMs, RAG, LangGraph, AI products</dd></div>
+                <div><dt>BASE</dt><dd>Pune, India · Open to remote</dd></div>
+              </dl>
+            </div>
           </div>
         </section>
 
@@ -234,9 +242,18 @@ export default function Home() {
             <p>I&apos;m open to internships, research collaborations, open-source work, and ambitious engineering projects.</p>
           </div>
           <div className="contact-actions">
-            <a className="contact-primary" href="mailto:dineshseervi1208@gmail.com"><span>Email me</span><strong>dineshseervi1208@gmail.com ↗</strong></a>
-            <a href="https://github.com/DS123-ally" target="_blank" rel="noreferrer"><span>GitHub</span><strong>DS123-ally ↗</strong></a>
-            <a href="https://www.linkedin.com/in/dinesh-seervi-00418532b/" target="_blank" rel="noreferrer"><span>LinkedIn</span><strong>dinesh-seervi ↗</strong></a>
+            <a className="contact-primary" href="mailto:dineshseervi1208@gmail.com">
+              <span className="contact-icon"><Mail size={20} strokeWidth={2.2} aria-hidden="true" /> Email</span>
+              <strong>dineshseervi1208@gmail.com <ArrowUpRight size={20} aria-hidden="true" /></strong>
+            </a>
+            <a href="https://github.com/DS123-ally" target="_blank" rel="noreferrer">
+              <span className="contact-icon"><i className="brand-glyph" aria-hidden="true">GH</i> GitHub</span>
+              <strong>DS123-ally <ArrowUpRight size={20} aria-hidden="true" /></strong>
+            </a>
+            <a href="https://www.linkedin.com/in/dinesh-seervi-00418532b/" target="_blank" rel="noreferrer">
+              <span className="contact-icon"><i className="brand-glyph brand-glyph--linkedin" aria-hidden="true">in</i> LinkedIn</span>
+              <strong>dinesh-seervi <ArrowUpRight size={20} aria-hidden="true" /></strong>
+            </a>
           </div>
         </section>
       </main>
