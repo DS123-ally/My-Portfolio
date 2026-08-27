@@ -257,7 +257,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="site-footer"><span>© 2026 Dinesh Seervi</span><span>Designed with intent · Built with Next.js</span><a href="#top">Back to top ↑</a></footer>
+      <footer className="site-footer"><span>© 2026 Dinesh Seervi</span><span>Build By Dinesh Seervi</span><a href="#top">Back to top ↑</a></footer>
       <ChatBot />
     </>
   )
