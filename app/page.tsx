@@ -1,5 +1,14 @@
 import Image from 'next/image'
-import { ArrowUpRight, Mail } from 'lucide-react'
+import {
+  ArrowUpRight,
+  Bot,
+  Braces,
+  BrainCircuit,
+  Cloud,
+  Database,
+  Mail,
+  Phone,
+} from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import ChatBot from '@/components/ChatBot'
 
@@ -144,6 +153,13 @@ export default function Home() {
           <div className="neo-card hero-photo motion-in motion-in--delay">
             <div className="photo-label"><span>AI / ML Engineer</span><span>Pune, IN</span></div>
             <div className="photo-frame"><Image src="/profile.jpg" alt="Dinesh Seervi" fill priority sizes="(max-width: 760px) 100vw, 38vw" /></div>
+            <div className="floating-tech" aria-hidden="true">
+              <span className="floating-tech__item floating-tech__item--one"><BrainCircuit /><b>AI</b></span>
+              <span className="floating-tech__item floating-tech__item--two"><Braces /><b>Code</b></span>
+              <span className="floating-tech__item floating-tech__item--three"><Database /><b>Data</b></span>
+              <span className="floating-tech__item floating-tech__item--four"><Cloud /><b>Cloud</b></span>
+              <span className="floating-tech__item floating-tech__item--five"><Bot /><b>Agents</b></span>
+            </div>
           </div>
 
           <div className="neo-card hero-status motion-in">
@@ -240,6 +256,7 @@ export default function Home() {
             <div className="section-code"><span>07</span>Contact / available</div>
             <h2>Have an AI problem worth solving?</h2>
             <p>I&apos;m open to internships, research collaborations, open-source work, and ambitious engineering projects.</p>
+            <div className="contact-availability"><span aria-hidden="true" /> Usually replies within 24 hours</div>
           </div>
           <div className="contact-actions">
             <a className="contact-primary" href="mailto:dineshseervi1208@gmail.com">
@@ -253,6 +270,10 @@ export default function Home() {
             <a href="https://www.linkedin.com/in/dinesh-seervi-00418532b/" target="_blank" rel="noreferrer">
               <span className="contact-icon"><i className="brand-glyph brand-glyph--linkedin" aria-hidden="true">in</i> LinkedIn</span>
               <strong>dinesh-seervi <ArrowUpRight size={20} aria-hidden="true" /></strong>
+            </a>
+            <a href="tel:+919699623993">
+              <span className="contact-icon"><Phone size={20} aria-hidden="true" /> Phone</span>
+              <strong>+91 96996 23993 <ArrowUpRight size={20} aria-hidden="true" /></strong>
             </a>
           </div>
         </section>
