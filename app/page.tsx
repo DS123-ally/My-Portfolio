@@ -225,7 +225,7 @@ export default function Home() {
           <SectionHeader index="02" eyebrow="Selected systems" title="Work built to solve, not just demonstrate." copy="A focused set of AI products showing how I think across retrieval, orchestration, interface design, and delivery." />
           <div className="project-grid">
             {PROJECTS.map((project) => (
-              <article key={project.name} className={`project-card ${project.featured ? 'project-card--featured' : ''}`}>
+              <article key={project.name} className="project-card">
                 <ProjectVisual tone={project.tone} file={project.file} status={project.status} steps={project.steps} variant={project.variant} />
                 <div className="project-content">
                   <div className="project-topline"><span>{project.index}</span><span>{project.eyebrow}</span></div>
