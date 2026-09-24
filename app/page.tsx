@@ -1,16 +1,11 @@
-import Image from 'next/image'
 import {
   ArrowUpRight,
-  Bot,
-  Braces,
-  BrainCircuit,
-  Cloud,
-  Database,
   Mail,
   Phone,
 } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import ChatBot from '@/components/ChatBot'
+import Portrait from '@/components/Portrait'
 
 const PROJECTS = [
   {
@@ -18,9 +13,13 @@ const PROJECTS = [
     name: 'AI Research Agent',
     eyebrow: 'Agentic research automation',
     summary: 'A graph-based research system that retrieves information, synthesizes findings, and generates structured documents.',
-    outcome: 'Turns open-ended research prompts into traceable, organized outputs.',
+    outcome: 'Turns vague research questions into cited, structured reports.',
     tags: ['Python', 'LangGraph', 'LangChain', 'Streamlit'],
     github: 'https://github.com/DS123-ally/AI-Research-Agent',
+    file: 'research_graph.py',
+    status: 'BRIEF → CITED REPORT',
+    steps: ['QUERY', 'SEARCH', 'SYNTH', 'CITE'],
+    variant: 'graph',
     tone: 'blue',
     featured: true,
   },
@@ -29,9 +28,13 @@ const PROJECTS = [
     name: 'Agentic Blog Gen',
     eyebrow: 'Full-stack content workflow',
     summary: 'An AI writing workflow for generating structured, SEO-ready articles with authentication and a responsive interface.',
-    outcome: 'Coordinates research, drafting, and formatting through a multi-step agent flow.',
+    outcome: 'Ships SEO-ready articles through one authenticated agent pipeline.',
     tags: ['Next.js', 'FastAPI', 'Firebase', 'LangGraph'],
     github: 'https://github.com/DS123-ally/Agentic_BlogGeneration',
+    file: 'blog_pipeline.ts',
+    status: 'DRAFT → PUBLISHABLE POST',
+    steps: ['AUTH', 'RESEARCH', 'DRAFT', 'SEO'],
+    variant: 'stack',
     tone: 'ink',
     featured: false,
   },
@@ -40,9 +43,13 @@ const PROJECTS = [
     name: 'AI Auto Interview',
     eyebrow: 'Speech + evaluation system',
     summary: 'An intelligent interview simulator that transcribes responses and evaluates technical and communication performance.',
-    outcome: 'Creates a repeatable practice loop with feedback grounded in each answer.',
+    outcome: 'Gives candidates scored feedback on both answers and delivery.',
     tags: ['Python', 'RAG', 'Speech AI', 'Streamlit'],
     github: 'https://github.com/DS123-ally/AI-powered-interview-model',
+    file: 'interview_loop.py',
+    status: 'ANSWER → SCORED FEEDBACK',
+    steps: ['ASK', 'SPEAK', 'TRANSCRIBE', 'SCORE'],
+    variant: 'score',
     tone: 'paper',
     featured: false,
   },
@@ -51,9 +58,13 @@ const PROJECTS = [
     name: 'Web Summarizer',
     eyebrow: 'RAG-powered knowledge tool',
     summary: 'A web and document summarizer built with embeddings, vector search, and retrieval-augmented generation.',
-    outcome: 'Makes long-form sources easier to query, understand, and reuse.',
+    outcome: 'Lets you query long pages and PDFs without reading them first.',
     tags: ['LangChain', 'Groq', 'Vector DB', 'RAG'],
     github: 'https://github.com/DS123-ally/Web_Summarizer-using-Langchain-Groq',
+    file: 'rag_index.py',
+    status: 'SOURCE → GROUNDED ANSWER',
+    steps: ['FETCH', 'EMBED', 'RETRIEVE', 'ANSWER'],
+    variant: 'chunks',
     tone: 'green',
     featured: false,
   },
@@ -113,17 +124,60 @@ function SectionHeader({ index, eyebrow, title, copy }: { index: string; eyebrow
   )
 }
 
-function ProjectVisual({ tone, index }: { tone: string; index: string }) {
+function ProjectVisual({
+  tone,
+  file,
+  status,
+  steps,
+  variant,
+}: {
+  tone: string
+  file: string
+  status: string
+  steps: string[]
+  variant: string
+}) {
   return (
     <div className={`project-visual project-visual--${tone}`} aria-hidden="true">
-      <div className="visual-toolbar"><i /><i /><i /><span>system_{index}.ai</span></div>
-      <div className="visual-canvas">
+      <div className="visual-toolbar"><i /><i /><i /><span>{file}</span></div>
+      <div className={`visual-canvas visual-canvas--${variant}`}>
         <div className="visual-sidebar"><i /><i /><i /><i /></div>
-        <div className="visual-flow">
-          <span>INPUT</span><b>→</b><span>RETRIEVE</span><b>→</b><span>REASON</span><b>→</b><span>OUTPUT</span>
-        </div>
+        {variant === 'graph' && (
+          <div className="visual-graph">
+            {steps.map((step) => <span key={step}>{step}</span>)}
+          </div>
+        )}
+        {variant === 'stack' && (
+          <div className="visual-stack">
+            {steps.map((step, index) => (
+              <div key={step}><b>0{index + 1}</b><span>{step}</span></div>
+            ))}
+          </div>
+        )}
+        {variant === 'score' && (
+          <div className="visual-score">
+            <div className="visual-wave"><i /><i /><i /><i /><i /><i /><i /></div>
+            <div className="visual-flow">
+              {steps.flatMap((step, index) => [
+                <span key={step}>{step}</span>,
+                index < steps.length - 1 ? <b key={`${step}-arrow`}>→</b> : null,
+              ])}
+            </div>
+          </div>
+        )}
+        {variant === 'chunks' && (
+          <div className="visual-chunks">
+            <div className="visual-flow">
+              {steps.flatMap((step, index) => [
+                <span key={step}>{step}</span>,
+                index < steps.length - 1 ? <b key={`${step}-arrow`}>→</b> : null,
+              ])}
+            </div>
+            <div className="chunk-row"><i /><i /><i /></div>
+          </div>
+        )}
         <div className="visual-output">
-          <span>STATUS / COMPLETE</span>
+          <span>{status}</span>
           <i /><i /><i />
         </div>
       </div>
@@ -141,25 +195,18 @@ export default function Home() {
             <div className="card-kicker"><span>01</span> Portfolio / 2026</div>
             <h1 id="hero-title">I build AI systems that turn complex work into useful products.</h1>
             <p>
-              I&apos;m <strong>Dinesh Seervi</strong>, an AI developer and computer science student focused on
+              I&apos;m <strong>Dinesh Seervi</strong>, a computer science student focused on
               agentic workflows, RAG, and practical machine learning.
             </p>
             <div className="hero-actions">
               <a className="neo-button neo-button--primary" href="#projects">Explore selected work <span>↘</span></a>
-              <a className="neo-button" href="https://shy-violet-751.linkyhost.com" target="_blank" rel="noreferrer">View résumé <span>↗</span></a>
+              <a className="neo-button" href="https://shy-violet-751.linkyhost.com" target="_blank" rel="noopener noreferrer">View résumé <span>↗</span></a>
             </div>
           </div>
 
           <div className="neo-card hero-photo motion-in motion-in--delay">
-            <div className="photo-label"><span>AI / ML Engineer</span><span>Pune, IN</span></div>
-            <div className="photo-frame"><Image src="/profile.jpg" alt="Dinesh Seervi" fill priority sizes="(max-width: 760px) 100vw, 38vw" /></div>
-            <div className="floating-tech" aria-hidden="true">
-              <span className="floating-tech__item floating-tech__item--one"><BrainCircuit /><b>AI</b></span>
-              <span className="floating-tech__item floating-tech__item--two"><Braces /><b>Code</b></span>
-              <span className="floating-tech__item floating-tech__item--three"><Database /><b>Data</b></span>
-              <span className="floating-tech__item floating-tech__item--four"><Cloud /><b>Cloud</b></span>
-              <span className="floating-tech__item floating-tech__item--five"><Bot /><b>Agents</b></span>
-            </div>
+            <div className="photo-label"><span>CS Student</span><span>Pune, IN</span></div>
+            <Portrait />
           </div>
 
           <div className="neo-card hero-status motion-in">
@@ -178,15 +225,15 @@ export default function Home() {
           <SectionHeader index="02" eyebrow="Selected systems" title="Work built to solve, not just demonstrate." copy="A focused set of AI products showing how I think across retrieval, orchestration, interface design, and delivery." />
           <div className="project-grid">
             {PROJECTS.map((project) => (
-              <article key={project.name} className={`project-card ${project.featured ? 'project-card--featured' : ''}`}>
-                <ProjectVisual tone={project.tone} index={project.index} />
+              <article key={project.name} className="project-card">
+                <ProjectVisual tone={project.tone} file={project.file} status={project.status} steps={project.steps} variant={project.variant} />
                 <div className="project-content">
                   <div className="project-topline"><span>{project.index}</span><span>{project.eyebrow}</span></div>
                   <h3>{project.name}</h3>
                   <p>{project.summary}</p>
                   <div className="project-outcome"><span>WHY IT MATTERS</span><strong>{project.outcome}</strong></div>
                   <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                  <a className="text-link" href={project.github} target="_blank" rel="noreferrer" aria-label={`View ${project.name} repository`}>View repository <span>↗</span></a>
+                  <a className="text-link" href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} repository`}>View repository <span>↗</span></a>
                 </div>
               </article>
             ))}
@@ -226,8 +273,8 @@ export default function Home() {
           <div className="metric-grid">
             <article className="metric-card metric-card--blue"><span>01</span><strong>1×</strong><h3>Hackathon winner</h3><p>Built an AI solution in a collaborative, time-boxed environment.</p></article>
             <article className="metric-card"><span>02</span><strong>8+</strong><h3>Hackathons</h3><p>Across AI, machine learning, web development, and open source.</p></article>
-            <a className="metric-card" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=60126C04B7C8518BACB6BB8948D459B3864CC1C93BE4327AA507E61912123E7D" target="_blank" rel="noreferrer"><span>03 ↗</span><strong>OCI</strong><h3>AI Foundations</h3><p>Oracle Cloud Infrastructure certification · 2025.</p></a>
-            <a className="metric-card metric-card--ink" href="https://www.hackerrank.com/certificates/ba9a1180bc43" target="_blank" rel="noreferrer"><span>04 ↗</span><strong>HR</strong><h3>Verified skills</h3><p>HackerRank programming and problem-solving certificate.</p></a>
+            <a className="metric-card" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=60126C04B7C8518BACB6BB8948D459B3864CC1C93BE4327AA507E61912123E7D" target="_blank" rel="noopener noreferrer"><span>03 ↗</span><strong>OCI</strong><h3>AI Foundations</h3><p>Oracle Cloud Infrastructure certification · 2025.</p></a>
+            <a className="metric-card metric-card--ink" href="https://www.hackerrank.com/certificates/ba9a1180bc43" target="_blank" rel="noopener noreferrer"><span>04 ↗</span><strong>HR</strong><h3>Verified skills</h3><p>HackerRank programming and problem-solving certificate.</p></a>
           </div>
         </section>
 
@@ -263,11 +310,11 @@ export default function Home() {
               <span className="contact-icon"><Mail size={20} strokeWidth={2.2} aria-hidden="true" /> Email</span>
               <strong>dineshseervi1208@gmail.com <ArrowUpRight size={20} aria-hidden="true" /></strong>
             </a>
-            <a href="https://github.com/DS123-ally" target="_blank" rel="noreferrer">
+            <a href="https://github.com/DS123-ally" target="_blank" rel="noopener noreferrer">
               <span className="contact-icon"><i className="brand-glyph" aria-hidden="true">GH</i> GitHub</span>
               <strong>DS123-ally <ArrowUpRight size={20} aria-hidden="true" /></strong>
             </a>
-            <a href="https://www.linkedin.com/in/dinesh-seervi-00418532b/" target="_blank" rel="noreferrer">
+            <a href="https://www.linkedin.com/in/dinesh-seervi-00418532b/" target="_blank" rel="noopener noreferrer">
               <span className="contact-icon"><i className="brand-glyph brand-glyph--linkedin" aria-hidden="true">in</i> LinkedIn</span>
               <strong>dinesh-seervi <ArrowUpRight size={20} aria-hidden="true" /></strong>
             </a>
@@ -278,7 +325,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="site-footer"><span>© 2026 Dinesh Seervi</span><span>Build By Dinesh Seervi</span><a href="#top">Back to top ↑</a></footer>
+      <footer className="site-footer"><span>© 2026 Dinesh Seervi</span><span>Built by Dinesh Seervi</span><a href="#top">Back to top ↑</a></footer>
       <ChatBot />
     </>
   )
