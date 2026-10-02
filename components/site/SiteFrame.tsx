@@ -6,6 +6,7 @@ import { ArrowUpRight, Search } from 'lucide-react'
 import { site } from '@/lib/site'
 import { CommandPalette } from '@/components/site/CommandPalette'
 import { GithubHeatmap } from '@/components/site/GithubHeatmap'
+import { PullCord } from '@/components/site/PullCord'
 
 const NAV = [
   { label: 'home', href: '#top' },
@@ -123,6 +124,7 @@ export default function SiteFrame() {
     <div className="atmosphere pb-16 font-sans text-[var(--fg)]">
       <div id="cursor-dot" aria-hidden="true" />
       <div id="cursor-ring" aria-hidden="true" />
+      <PullCord onToggle={toggleTheme} />
       <header className="relative z-20">
         <div className="shell flex items-center justify-end gap-4 px-6 py-5 sm:px-8">
           <nav aria-label="Primary" className="flex flex-wrap justify-end gap-x-5 gap-y-2 text-[13px] text-[var(--muted)]">
