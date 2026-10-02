@@ -114,7 +114,79 @@ input, textarea { cursor: text; }
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
 
+.pull-cord {
+  position: fixed;
+  top: 0;
+  right: 28px;
+  z-index: 70;
+  width: 28px;
+  height: 100vh;
+  pointer-events: none;
+}
+.pull-cord-swing {
+  position: absolute;
+  inset: 0;
+  transform-origin: top center;
+  animation: cord-sway 4.2s ease-in-out infinite;
+}
+.pull-cord.is-dragging .pull-cord-swing { animation: none; }
+.pull-cord-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--soft);
+  transform: translateX(-50%);
+  transition: height 520ms cubic-bezier(0.22, 1.4, 0.32, 1);
+}
+.pull-cord-handle {
+  pointer-events: auto;
+  position: absolute;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin-left: -9px;
+  margin-top: -9px;
+  border: 0;
+  border-radius: 999px;
+  background: #f7f7f7;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 8px 16px rgba(0, 0, 0, 0.22);
+  transition: top 520ms cubic-bezier(0.22, 1.4, 0.32, 1);
+}
+.light .pull-cord-handle {
+  background: #ffffff;
+  box-shadow:
+    0 -1px 0 rgba(0, 0, 0, 0.04) inset,
+    0 10px 18px rgba(0, 0, 0, 0.12);
+}
+.pull-cord.is-dragging .pull-cord-line,
+.pull-cord.is-dragging .pull-cord-handle { transition: none; }
+.pull-cord-hint {
+  position: absolute;
+  top: 34vh;
+  right: 42px;
+  width: 92px;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+@keyframes cord-sway {
+  0%, 100% { transform: rotate(-1.1deg); }
+  50% { transform: rotate(1.1deg); }
+}
+
+@media (max-width: 720px) {
+  .pull-cord { right: 10px; }
+  .pull-cord-hint { right: 28px; width: 72px; font-size: 13px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   #cursor-dot, #cursor-ring { display: none; }
+  .pull-cord-swing { animation: none; }
+  .pull-cord-line, .pull-cord-handle { transition: none; }
 }
