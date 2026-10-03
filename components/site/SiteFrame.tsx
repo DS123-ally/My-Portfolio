@@ -208,8 +208,20 @@ export default function SiteFrame() {
             <div className="divide-y divide-[var(--line)]">
               {site.projects.map((project) => (
                 <article key={project.title} className="py-10 sm:py-14">
-                  <div className="flex aspect-[16/9] items-end rounded-[5px] border border-[var(--line)] bg-[var(--card)] p-6">
-                    <span className="font-serif text-4xl text-[var(--soft)] sm:text-5xl">{project.title}</span>
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-[5px] border border-[var(--line)] bg-[var(--card)]">
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} screenshot`}
+                        fill
+                        sizes="(min-width: 768px) 720px, 100vw"
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <div className="flex h-full items-end p-6">
+                        <span className="font-serif text-4xl text-[var(--soft)] sm:text-5xl">{project.title}</span>
+                      </div>
+                    )}
                   </div>
                   <div className="mt-6 flex flex-wrap items-baseline justify-between gap-3">
                     <h4 className="font-serif text-2xl sm:text-3xl">{project.title}</h4>

@@ -10,7 +10,7 @@ const KNOWLEDGE = [
   },
   {
     title: 'Projects',
-    body: 'Featured projects include AI Research Agent, Agentic Blog Gen System, AI-Powered Auto Interview, and Web Summarizer Application.',
+    body: 'Featured projects include AI Research Agent, PDForge, Rahasya, AI-Powered Auto Interview, and Web Summarizer Application.',
   },
   {
     title: 'Skills',
@@ -71,11 +71,11 @@ function answerQuestion(query: string) {
     }
   }
 
-  if (/project|rag|research|summar|interview|blog/.test(normalized)) {
+  if (/project|rag|research|summar|interview|pdf|rahasya|language/.test(normalized)) {
     return {
       heading: 'Featured projects',
       text: 'His work focuses on turning AI capabilities into useful, end-to-end products.',
-      points: ['AI Research Agent — graph-based research and synthesis', 'Agentic Blog Gen — multi-step, SEO-ready content workflow', 'AI Auto Interview — speech transcription and answer evaluation', 'Web Summarizer — retrieval-based document and web querying'],
+      points: ['AI Research Agent — graph-based research and synthesis', 'PDForge — private, in-browser PDF tools', 'Rahasya — gamified language learning across ten Indian languages', 'AI Auto Interview — speech transcription and answer evaluation', 'Web Summarizer — retrieval-based document and web querying'],
       sources: ['Projects'],
     }
   }

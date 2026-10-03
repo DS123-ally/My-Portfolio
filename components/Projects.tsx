@@ -13,13 +13,20 @@ const PROJECTS = [
     github: 'https://github.com/DS123-ally/AI-Research-Agent',
   },
   {
-    name: 'Agentic Blog Gen System',
-    subtitle: 'AI-driven structured blog post generator',
-    desc: 'Built an AI-driven application to generate structured and SEO-friendly blog posts automatically. Designed a responsive frontend using Next.js and Tailwind CSS with Firebase authentication.',
-    features: ['SEO-friendly generation', 'Next.js + Tailwind frontend', 'Firebase Auth', 'FastAPI backend', 'LangGraph workflows'],
-    tech: ['Next.js', 'FastAPI', 'LangGraph', 'Firebase', 'Groq LLM'],
-    tags: ['Generative AI', 'Full Stack', 'Content Automation'],
-    github: 'https://github.com/DS123-ally/Agentic_BlogGeneration',
+    name: 'PDForge',
+    subtitle: 'Private, in-browser PDF tools',
+    desc: 'A PDF workspace that organizes, converts, and edits files locally in the browser, with no upload and no account.',
+    features: ['Organize, convert, and edit PDFs', 'Files stay on the device', 'No account required'],
+    tech: [],
+    tags: ['Privacy', 'Documents'],
+  },
+  {
+    name: 'Rahasya',
+    subtitle: 'Gamified language learning',
+    desc: 'A third-person street you walk through ten Indian languages, with Google and magic-link sign-in.',
+    features: ['Ten Indian languages', 'Third-person street exploration', 'Google and magic-link sign-in'],
+    tech: [],
+    tags: ['Language', 'Learning'],
   },
   {
     name: 'AI-Powered Auto Interview',
@@ -76,9 +83,11 @@ export default function Projects() {
                 ))}
               </div>
 
-              <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-card__link">
-                View repository
-              </a>
+              {'github' in project && project.github ? (
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-card__link">
+                  View repository
+                </a>
+              ) : null}
             </article>
           </FadeUp>
         ))}
