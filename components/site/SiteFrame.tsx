@@ -240,16 +240,31 @@ export default function SiteFrame() {
                       </button>
                     ))}
                   </div>
-                  {project.links.source && (
-                    <a
-                      href={project.links.source}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs text-[var(--muted)] hover:text-[var(--fg)]"
-                    >
-                      GitHub
-                      <ArrowUpRight className="size-3.5" />
-                    </a>
+                  {(project.links.live || project.links.source) && (
+                    <div className="mt-4 flex flex-wrap gap-4">
+                      {project.links.live && (
+                        <a
+                          href={project.links.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 font-mono text-xs text-[var(--muted)] hover:text-[var(--fg)]"
+                        >
+                          Live
+                          <ArrowUpRight className="size-3.5" />
+                        </a>
+                      )}
+                      {project.links.source && (
+                        <a
+                          href={project.links.source}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 font-mono text-xs text-[var(--muted)] hover:text-[var(--fg)]"
+                        >
+                          GitHub
+                          <ArrowUpRight className="size-3.5" />
+                        </a>
+                      )}
+                    </div>
                   )}
                 </article>
               ))}

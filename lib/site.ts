@@ -41,18 +41,24 @@ export const site = {
     {
       title: 'PDForge',
       blurb: 'A private PDF workspace that organizes, converts, and edits files in the browser, with no upload and no account.',
-      stack: [],
+      stack: ['Next.js', 'TypeScript', 'pdf-lib', 'PDF.js'],
       year: '2026',
       image: '/projects/pdforge.png',
-      links: {},
+      links: {
+        live: 'https://pdf-forge-taupe.vercel.app',
+        source: 'https://github.com/DS123-ally/PDFForge',
+      },
     },
     {
       title: 'Rahasya',
-      blurb: 'A gamified language platform: a third-person street you walk through ten Indian languages.',
-      stack: [],
+      blurb: 'A 3D street you walk through ten Indian languages, talking to NPCs with voice.',
+      stack: ['Next.js', 'Three.js', 'Sarvam AI', 'Supabase'],
       year: '2026',
       image: '/projects/rahasya.png',
-      links: {},
+      links: {
+        live: 'https://rahasya-voice-mystery-adventure.vercel.app',
+        source: 'https://github.com/DS123-ally/RAHASYA-Voice-Mystery-Adventure',
+      },
     },
     {
       title: 'AI Auto Interview',
