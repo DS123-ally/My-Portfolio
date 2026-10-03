@@ -63,6 +63,7 @@ section { scroll-margin-top: 24px; }
 }
 
 .shell { width: min(100%, 760px); margin-inline: auto; }
+.shell-narrow { width: min(100%, 560px); margin-inline: auto; }
 
 .nav-link, .section-link { position: relative; }
 .nav-link::after, .section-link::after {
