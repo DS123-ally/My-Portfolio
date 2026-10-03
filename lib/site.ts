@@ -3,6 +3,7 @@ export type Project = {
   blurb: string
   stack: string[]
   year: string
+  image?: string
   links: { live?: string; source?: string }
 }
 
@@ -34,20 +35,31 @@ export const site = {
       blurb: 'A graph-based research system that retrieves sources, synthesizes findings, and writes a cited report from a vague question.',
       stack: ['Python', 'LangGraph', 'LangChain', 'Streamlit'],
       year: '2026',
+      image: '/projects/ai-research-agent.png',
       links: { source: 'https://github.com/DS123-ally/AI-Research-Agent' },
     },
     {
-      title: 'Agentic Blog Gen',
-      blurb: 'An authenticated writing pipeline that researches a topic and drafts an SEO-ready article through a single agent workflow.',
-      stack: ['Next.js', 'FastAPI', 'Firebase', 'LangGraph'],
-      year: '2025',
-      links: { source: 'https://github.com/DS123-ally/Agentic_BlogGeneration' },
+      title: 'PDForge',
+      blurb: 'A private PDF workspace that organizes, converts, and edits files in the browser, with no upload and no account.',
+      stack: [],
+      year: '2026',
+      image: '/projects/pdforge.png',
+      links: {},
+    },
+    {
+      title: 'Rahasya',
+      blurb: 'A gamified language platform: a third-person street you walk through ten Indian languages.',
+      stack: [],
+      year: '2026',
+      image: '/projects/rahasya.png',
+      links: {},
     },
     {
       title: 'AI Auto Interview',
       blurb: 'An interview simulator that asks questions, transcribes spoken answers, and scores both technical content and delivery.',
       stack: ['Python', 'RAG', 'Speech AI', 'Streamlit'],
       year: '2025',
+      image: '/projects/ai-auto-interview.jpg',
       links: { source: 'https://github.com/DS123-ally/AI-powered-interview-model' },
     },
     {
@@ -55,6 +67,7 @@ export const site = {
       blurb: 'A retrieval tool that embeds pages and PDFs, then answers questions from the source instead of asking you to read it first.',
       stack: ['LangChain', 'Groq', 'Vector DB', 'RAG'],
       year: '2025',
+      image: '/projects/web-summarizer.png',
       links: { source: 'https://github.com/DS123-ally/Web_Summarizer-using-Langchain-Groq' },
     },
   ] as Project[],
