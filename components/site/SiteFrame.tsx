@@ -203,23 +203,23 @@ export default function SiteFrame() {
         </section>
 
         <section id="projects">
-          <SectionTitle href="#projects" className="shell-narrow">Projects</SectionTitle>
+          <SectionTitle href="#projects" aside="( selected systems )">Projects</SectionTitle>
           <div className="shell-narrow px-6 pb-8 pt-2 sm:px-8">
-            <h3 className="mb-2 font-mono text-sm uppercase tracking-[0.12em] text-[var(--soft)]">Selected systems</h3>
             <div className="divide-y divide-[var(--line)]">
               {site.projects.map((project) => (
                 <article key={project.title} className="py-10 sm:py-14">
-                  <div className="relative aspect-[16/9] overflow-hidden rounded-[5px] border border-[var(--line)] bg-[var(--card)]">
+                  <div className="overflow-hidden rounded-[5px] border border-[var(--line)] bg-[var(--card)]">
                     {project.image ? (
                       <Image
                         src={project.image}
                         alt={`${project.title} screenshot`}
-                        fill
+                        width={1600}
+                        height={748}
                         sizes="(min-width: 768px) 512px, 100vw"
-                        className="object-cover object-top"
+                        className="h-auto w-full"
                       />
                     ) : (
-                      <div className="flex h-full items-end p-6">
+                      <div className="flex aspect-[16/9] items-end p-6">
                         <span className="font-serif text-4xl text-[var(--soft)] sm:text-5xl">{project.title}</span>
                       </div>
                     )}
