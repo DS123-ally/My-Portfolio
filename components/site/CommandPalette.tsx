@@ -23,6 +23,7 @@ export function CommandPalette({
     const jumps: Item[] = [
       ['About', '#about'],
       ['Projects', '#projects'],
+      ['Blog', '#blog'],
       ['Tech stack', '#skills'],
       ['Experience', '#experience'],
       ['GitHub', '#github'],

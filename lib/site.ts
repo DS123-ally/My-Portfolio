@@ -7,6 +7,13 @@ export type Project = {
   links: { live?: string; source?: string }
 }
 
+export type Post = {
+  title: string
+  date: string
+  blurb?: string
+  href: string
+}
+
 export const site = {
   name: 'Dinesh Seervi',
   firstName: 'Dinesh',
@@ -124,6 +131,14 @@ export const site = {
       blurb: 'Built TensorFlow and Scikit-learn workflows, then surfaced predictions in Streamlit dashboards.',
     },
   ],
+  posts: [
+    {
+      title: 'Agent Harness Engineering: Why the Scaffolding Around Your AI Model Matters More Than the Model Itself',
+      date: 'Oct 2026',
+      blurb: 'The model is the engine. The harness is the rest of the car: the loop, tools, context, memory, verification, and guardrails that make an agent reliable.',
+      href: 'https://medium.com/@dineshseervi1208/agent-harness-engineering-why-the-scaffolding-around-your-ai-model-matters-more-than-the-model-759afb0f4d39',
+    },
+  ] as Post[],
   recognition: [
     { label: 'Hackathon winner', detail: 'Shipped an AI solution under a time box with a team.' },
     { label: '8+ hackathons', detail: 'Across AI, machine learning, web, and open source.' },

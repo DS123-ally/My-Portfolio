@@ -12,6 +12,7 @@ const NAV = [
   { label: 'home', href: '#top' },
   { label: 'about', href: '#about' },
   { label: 'projects', href: '#projects' },
+  { label: 'blog', href: '#blog' },
   { label: 'tech stack', href: '#skills' },
   { label: 'experience', href: '#experience' },
   { label: 'contact', href: '#contact' },
@@ -202,8 +203,8 @@ export default function SiteFrame() {
         </section>
 
         <section id="projects">
-          <SectionTitle href="#projects">Projects</SectionTitle>
-          <div className="shell px-6 pb-8 pt-2 sm:px-8">
+          <SectionTitle href="#projects" className="shell-narrow">Projects</SectionTitle>
+          <div className="shell-narrow px-6 pb-8 pt-2 sm:px-8">
             <h3 className="mb-2 font-mono text-sm uppercase tracking-[0.12em] text-[var(--soft)]">Selected systems</h3>
             <div className="divide-y divide-[var(--line)]">
               {site.projects.map((project) => (
@@ -214,7 +215,7 @@ export default function SiteFrame() {
                         src={project.image}
                         alt={`${project.title} screenshot`}
                         fill
-                        sizes="(min-width: 768px) 720px, 100vw"
+                        sizes="(min-width: 768px) 512px, 100vw"
                         className="object-cover object-top"
                       />
                     ) : (
@@ -269,6 +270,36 @@ export default function SiteFrame() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section id="blog">
+          <SectionTitle href="#blog">Blog</SectionTitle>
+          <div className="shell px-6 py-6 sm:px-8">
+            {site.posts.length > 0 && (
+              <ul className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
+                {site.posts.map((post) => (
+                  <li key={post.title}>
+                    <a
+                      href={post.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="grid gap-2 py-6 hover:text-[var(--fg)] sm:grid-cols-[88px_1fr_auto] sm:items-baseline"
+                    >
+                      <p className="font-mono text-xs text-[var(--soft)]">{post.date}</p>
+                      <div>
+                        <h3 className="font-serif text-2xl">{post.title}</h3>
+                        {post.blurb && <p className="project-copy mt-3 max-w-xl text-base leading-7">{post.blurb}</p>}
+                      </div>
+                      <span className="inline-flex items-center gap-1.5 font-mono text-xs text-[var(--muted)]">
+                        Read
+                        <ArrowUpRight className="size-3.5" />
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </section>
 
@@ -387,9 +418,19 @@ export default function SiteFrame() {
   )
 }
 
-function SectionTitle({ href, children, aside }: { href: string; children: string; aside?: string }) {
+function SectionTitle({
+  href,
+  children,
+  aside,
+  className = 'shell',
+}: {
+  href: string
+  children: string
+  aside?: string
+  className?: string
+}) {
   return (
-    <div className="shell bg-[var(--bg)] px-6 py-3 sm:px-8">
+    <div className={`${className} bg-[var(--bg)] px-6 py-3 sm:px-8`}>
       <div className="flex items-center justify-between gap-4">
         <a href={href} className="section-link font-serif text-2xl tracking-wide">
           {children}
