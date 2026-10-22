@@ -133,6 +133,12 @@ export const site = {
   ],
   posts: [
     {
+      title: 'MCP Just Went Stateless: What Changed and How to Build for It',
+      date: 'Oct 2026',
+      blurb: 'The initialize handshake and session IDs are gone. Every MCP request now stands on its own, and that changes how you deploy and build servers.',
+      href: 'https://medium.com/@dineshseervi1208/mcp-just-went-stateless-what-changed-and-how-to-build-for-it-04b02ec9ad8e',
+    },
+    {
       title: 'Agent Harness Engineering: Why the Scaffolding Around Your AI Model Matters More Than the Model Itself',
       date: 'Oct 2026',
       blurb: 'The model is the engine. The harness is the rest of the car: the loop, tools, context, memory, verification, and guardrails that make an agent reliable.',
