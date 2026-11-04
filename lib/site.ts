@@ -133,6 +133,12 @@ export const site = {
   ],
   posts: [
     {
+      title: 'Monitoring vs Observability: Why Your AI System Needs Both',
+      date: 'Nov 2026',
+      blurb: 'Monitoring tells you when an AI system is failing; observability helps you understand why. A practical look at why production AI needs both.',
+      href: 'https://medium.com/@dineshseervi1208/monitoring-vs-observability-why-your-ai-system-needs-both-a2219b88089e?sharedUserId=dineshseervi1208',
+    },
+    {
       title: 'MCP Just Went Stateless: What Changed and How to Build for It',
       date: 'Oct 2026',
       blurb: 'The initialize handshake and session IDs are gone. Every MCP request now stands on its own, and that changes how you deploy and build servers.',
