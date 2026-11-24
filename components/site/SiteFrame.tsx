@@ -204,69 +204,71 @@ export default function SiteFrame() {
 
         <section id="projects">
           <SectionTitle href="#projects" aside="( selected systems )">Projects</SectionTitle>
-          <div className="shell-narrow px-6 pb-8 pt-2 sm:px-8">
-            <div className="divide-y divide-[var(--line)]">
+          <div className="shell px-6 pb-8 pt-2 sm:px-8">
+            <div className="grid gap-4 md:grid-cols-2">
               {site.projects.map((project) => (
-                <article key={project.title} className="py-10 sm:py-14">
-                  <div className="overflow-hidden rounded-[5px] border border-[var(--line)] bg-[var(--card)]">
+                <article key={project.title} className="group overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--card)] transition-colors hover:border-[var(--soft)]">
+                  <div className="relative aspect-[16/9] overflow-hidden border-b border-[var(--line)] bg-[var(--chip)]">
                     {project.image ? (
                       <Image
                         src={project.image}
                         alt={`${project.title} screenshot`}
                         width={1600}
                         height={748}
-                        sizes="(min-width: 768px) 512px, 100vw"
-                        className="h-auto w-full"
+                        sizes="(min-width: 768px) 360px, 100vw"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
                       />
                     ) : (
-                      <div className="flex aspect-[16/9] items-end p-6">
-                        <span className="font-serif text-4xl text-[var(--soft)] sm:text-5xl">{project.title}</span>
+                      <div className="flex h-full items-end p-5">
+                        <span className="font-serif text-3xl text-[var(--soft)]">{project.title}</span>
                       </div>
                     )}
                   </div>
-                  <div className="mt-6 flex flex-wrap items-baseline justify-between gap-3">
-                    <h4 className="font-serif text-2xl sm:text-3xl">{project.title}</h4>
-                    <span className="font-mono text-xs text-[var(--soft)]">{project.year}</span>
-                  </div>
-                  <p className="project-copy mt-3 max-w-2xl text-base leading-7">{project.blurb}</p>
-                  <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 font-mono text-[13px]">
-                    {project.stack.map((tech) => (
-                      <button
-                        key={tech}
-                        type="button"
-                        onClick={() => setActiveTech(activeTech === tech ? null : tech)}
-                        className={activeTech === tech ? 'text-[var(--fg)]' : 'project-copy hover:text-[var(--fg)]'}
-                      >
-                        {tech}
-                      </button>
-                    ))}
-                  </div>
-                  {(project.links.live || project.links.source) && (
-                    <div className="mt-4 flex flex-wrap gap-4">
-                      {project.links.live && (
-                        <a
-                          href={project.links.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 font-mono text-xs text-[var(--muted)] hover:text-[var(--fg)]"
-                        >
-                          Live
-                          <ArrowUpRight className="size-3.5" />
-                        </a>
-                      )}
-                      {project.links.source && (
-                        <a
-                          href={project.links.source}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 font-mono text-xs text-[var(--muted)] hover:text-[var(--fg)]"
-                        >
-                          GitHub
-                          <ArrowUpRight className="size-3.5" />
-                        </a>
-                      )}
+                  <div className="p-5">
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                      <h4 className="font-serif text-xl sm:text-2xl">{project.title}</h4>
+                      <span className="font-mono text-[11px] text-[var(--soft)]">{project.year}</span>
                     </div>
-                  )}
+                    <p className="project-copy mt-2 text-sm leading-6">{project.blurb}</p>
+                    <div className="mt-3 flex flex-wrap gap-1.5 font-mono text-[10px]">
+                      {project.stack.map((tech) => (
+                        <button
+                          key={tech}
+                          type="button"
+                          onClick={() => setActiveTech(activeTech === tech ? null : tech)}
+                          className={`rounded border px-2 py-1 transition-colors ${activeTech === tech ? 'border-[var(--fg)] text-[var(--fg)]' : 'border-[var(--line)] text-[var(--muted)] hover:border-[var(--soft)] hover:text-[var(--fg)]'}`}
+                        >
+                          {tech}
+                        </button>
+                      ))}
+                    </div>
+                    {(project.links.live || project.links.source) && (
+                      <div className="mt-4 flex flex-wrap gap-4 border-t border-[var(--line)] pt-3">
+                        {project.links.live && (
+                          <a
+                            href={project.links.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 font-mono text-xs text-[var(--muted)] hover:text-[var(--fg)]"
+                          >
+                            Live
+                            <ArrowUpRight className="size-3.5" />
+                          </a>
+                        )}
+                        {project.links.source && (
+                          <a
+                            href={project.links.source}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 font-mono text-xs text-[var(--muted)] hover:text-[var(--fg)]"
+                          >
+                            GitHub
+                            <ArrowUpRight className="size-3.5" />
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </article>
               ))}
             </div>

@@ -133,6 +133,12 @@ export const site = {
   ],
   posts: [
     {
+      title: 'HLD vs LLD: The Blueprint and the Wiring Behind Every System You Use',
+      date: 'Nov 2026',
+      blurb: 'Using a ride booking system to explain two design levels: HLD maps services, scale, and reliability; LLD shapes the classes and patterns inside each component.',
+      href: 'https://medium.com/@dineshseervi1208/hld-vs-lld-the-blueprint-and-the-wiring-behind-every-system-you-use-177cc54f73fb?sharedUserId=dineshseervi1208',
+    },
+    {
       title: 'Monitoring vs Observability: Why Your AI System Needs Both',
       date: 'Nov 2026',
       blurb: 'Monitoring tells you when an AI system is failing; observability helps you understand why. A practical look at why production AI needs both.',
