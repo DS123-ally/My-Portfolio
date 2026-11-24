@@ -34,6 +34,8 @@ export const site = {
   about: [
     'I’m a computer science student at AISSMS IOIT, Pune, building at the intersection of machine learning, retrieval, and agentic workflows.',
     'What I care about is practical intelligence: systems that find the right context, make a useful decision, and turn a vague task into something a person can actually ship.',
+    'I speak with developer communities about practical AI engineering. At Docker Community Pune, I presented on RAG beyond vector databases, including vectorless and reasoning-based retrieval.',
+    'Recent builds include LOCI, a local-first AI coding agent, and Sentra, an adaptive fraud-testing platform developed with my team.',
     'I’m open to internships, research collaborations, and engineering work where models have to hold up outside a demo.',
   ],
   projects: [
